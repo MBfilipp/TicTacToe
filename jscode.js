@@ -1,26 +1,18 @@
-let block1 = document.getElementById("1");
-let block2 = document.getElementById("2");
-let block3 = document.getElementById("3");
-let block4 = document.getElementById("4");
-let block5 = document.getElementById("5");
-let block6 = document.getElementById("6");
-let block7 = document.getElementById("7");
-let block8 = document.getElementById("8");
-let block9 = document.getElementById("9");
-
-let mainBlock = document.getElementsByClassName("main-squar")[0];
-let squar = document.getElementsByClassName("squar");
+const mainBlock = document.getElementsByClassName("main-squar")[0];
+const squar = document.getElementsByClassName("squar");
 let move = "first";
 
-addColorToBlock(block1);
-addColorToBlock(block2);
-addColorToBlock(block3);
-addColorToBlock(block4);
-addColorToBlock(block5);
-addColorToBlock(block6);
-addColorToBlock(block7);
-addColorToBlock(block8);
-addColorToBlock(block9);
+//Add event listener - check
+
+addColorToBlock(squar[0]);
+addColorToBlock(squar[1]);
+addColorToBlock(squar[2]);
+addColorToBlock(squar[3]);
+addColorToBlock(squar[4]);
+addColorToBlock(squar[5]);
+addColorToBlock(squar[6]);
+addColorToBlock(squar[7]);
+addColorToBlock(squar[8]);
 
 function containsBlock(arg, name) {
     return arg.classList.contains(name);
@@ -35,6 +27,10 @@ function blockInLineSecond(first, second, third) {
 }
 
 function winAndReload(color) {
+    move = "";
+
+    //Main block style
+
     if(color == "yellow") {
         mainBlock.style = "animation: shadowYellow 2s linear";
     }else if(color == "orange") {
@@ -46,46 +42,51 @@ function winAndReload(color) {
     setTimeout(() => {
         location.reload();
     }, 1500);
-   
+    
 }
 
+
 function moveBlock(){
-    if(blockInLineFirst(block1, block2, block3)) {
+
+    //For yellow
+
+    if(blockInLineFirst(squar[0], squar[1], squar[2])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block4, block5, block6)) {
+    }else if(blockInLineFirst(squar[3], squar[4], squar[5])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block7, block8, block9)) {
+    }else if(blockInLineFirst(squar[6], squar[7], squar[8])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block1, block5, block9)) {
+    }else if(blockInLineFirst(squar[0], squar[4], squar[8])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block2, block5, block8)) {
+    }else if(blockInLineFirst(squar[1], squar[4], squar[7])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block3, block5, block7)) {
+    }else if(blockInLineFirst(squar[2], squar[4], squar[6])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block1, block4, block7)) {
+    }else if(blockInLineFirst(squar[0], squar[3], squar[6])) {
         winAndReload("yellow");
-    }else if(blockInLineFirst(block3, block6, block9)) {
+    }else if(blockInLineFirst(squar[2], squar[5], squar[8])) {
         winAndReload("yellow");
     }
 
-    if(blockInLineSecond(block1, block2, block3)) {
+    //For orange
+
+    if(blockInLineSecond(squar[0], squar[1], squar[2])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block4, block5, block6)) {
+    }else if(blockInLineSecond(squar[3], squar[4], squar[5])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block7, block8, block9)) {
+    }else if(blockInLineSecond(squar[6], squar[7], squar[8])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block1, block5, block9)) {
+    }else if(blockInLineSecond(squar[0], squar[4], squar[8])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block2, block5, block8)) {
+    }else if(blockInLineSecond(squar[1], squar[4], squar[7])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block3, block5, block7)) {
+    }else if(blockInLineSecond(squar[2], squar[4], squar[6])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block1, block4, block7)) {
+    }else if(blockInLineSecond(squar[0], squar[3], squar[6])) {
         winAndReload("orange");
-    }else if(blockInLineSecond(block3, block6, block9)) {
+    }else if(blockInLineSecond(squar[2], squar[5], squar[8])) {
         winAndReload("orange");
     }
-    
 }
 
 function addColorToBlock(arg) {
@@ -102,4 +103,5 @@ function addColorToBlock(arg) {
     });  
 }
 
-let TIME = setInterval(moveBlock, 1000);
+//TIME - check 
+const TIME = setInterval(moveBlock, 100);
