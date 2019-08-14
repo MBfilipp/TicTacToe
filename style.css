@@ -1,0 +1,23 @@
+.squar {
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    background: red;
+}
+.main-squar {
+    width: 162px;
+    height: 162px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 200px;
+}
+@keyframes shadowYellow {
+    100% {
+        background-color: yellow;
+    }
+}
+@keyframes shadowOrange {
+    100% {
+        background-color: orange;
+    }
+}
