@@ -9,7 +9,9 @@
     height: 162px;
     display: flex;
     flex-wrap: wrap;
-    margin: 200px;
+}
+#p {
+    margin-left: 50px;
 }
 @keyframes shadowYellow {
     100% {
@@ -21,3 +23,10 @@
         background-color: orange;
     }
 }
+
+@keyframes shadowDraw {
+    100% {
+        background-color: red;
+    }
+}
+

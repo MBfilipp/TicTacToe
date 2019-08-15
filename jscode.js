@@ -20,6 +20,7 @@ function containsBlock(arg, name) {
 
 function blockInLineFirst(first, second, third) {
     return containsBlock(first, "first") && containsBlock(second, "first") && containsBlock(third, "first");
+    
 }
 
 function blockInLineSecond(first, second, third) {
@@ -35,6 +36,8 @@ function winAndReload(color) {
         mainBlock.style = "animation: shadowYellow 2s linear";
     }else if(color == "orange") {
         mainBlock.style = "animation: shadowOrange 2s linear";
+    }else if(color == "draw") {
+        mainBlock.style = "animation: shadowDraw 2s linear";
     }
     for(let i = 0; i < 9; i++) {
         squar[i].style = "display: none";
@@ -46,10 +49,8 @@ function winAndReload(color) {
 }
 
 
+
 function moveBlock(){
-
-    //For yellow
-
     if(blockInLineFirst(squar[0], squar[1], squar[2])) {
         winAndReload("yellow");
     }else if(blockInLineFirst(squar[3], squar[4], squar[5])) {
@@ -66,11 +67,7 @@ function moveBlock(){
         winAndReload("yellow");
     }else if(blockInLineFirst(squar[2], squar[5], squar[8])) {
         winAndReload("yellow");
-    }
-
-    //For orange
-
-    if(blockInLineSecond(squar[0], squar[1], squar[2])) {
+    }else if(blockInLineSecond(squar[0], squar[1], squar[2])) {
         winAndReload("orange");
     }else if(blockInLineSecond(squar[3], squar[4], squar[5])) {
         winAndReload("orange");
@@ -100,8 +97,12 @@ function addColorToBlock(arg) {
             arg.style = "background-color: orange";
             arg.classList.add("second");
         }
-    });  
+        
+    });     
 }
-
 //TIME - check 
-const TIME = setInterval(moveBlock, 100);
+
+const TIME = setInterval(moveBlock, 100);  
+
+
+
