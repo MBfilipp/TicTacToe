@@ -1,31 +1,15 @@
 const mainBlock = document.getElementsByClassName("main-squar")[0];
 const squar = document.getElementsByClassName("squar");
 let move = "first";
+let squarArray = [];
 
-//Add event listener - check
-
-addColorToBlock(squar[0]);
-addColorToBlock(squar[1]);
-addColorToBlock(squar[2]);
-addColorToBlock(squar[3]);
-addColorToBlock(squar[4]);
-addColorToBlock(squar[5]);
-addColorToBlock(squar[6]);
-addColorToBlock(squar[7]);
-addColorToBlock(squar[8]);
-
-function containsBlock(arg, name) {
-    return arg.classList.contains(name);
+for(let i = 0; i < 9; i++){
+    squarArray.push(squar[i]);
 }
 
-function blockInLineFirst(first, second, third) {
-    return containsBlock(first, "first") && containsBlock(second, "first") && containsBlock(third, "first");
-    
-}
-
-function blockInLineSecond(first, second, third) {
-    return containsBlock(first, "second") && containsBlock(second, "second") && containsBlock(third, "second");
-}
+squarArray.forEach(x => {
+    addColorToBlock(x);
+});
 
 function winAndReload(color) {
     move = "";
@@ -48,43 +32,33 @@ function winAndReload(color) {
     
 }
 
+let arrayCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 4, 6],
+    [0, 3, 6],
+    [2, 5, 8]    
+]
 
-
-function moveBlock(){
-    if(blockInLineFirst(squar[0], squar[1], squar[2])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[3], squar[4], squar[5])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[6], squar[7], squar[8])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[0], squar[4], squar[8])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[1], squar[4], squar[7])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[2], squar[4], squar[6])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[0], squar[3], squar[6])) {
-        winAndReload("yellow");
-    }else if(blockInLineFirst(squar[2], squar[5], squar[8])) {
-        winAndReload("yellow");
-    }else if(blockInLineSecond(squar[0], squar[1], squar[2])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[3], squar[4], squar[5])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[6], squar[7], squar[8])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[0], squar[4], squar[8])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[1], squar[4], squar[7])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[2], squar[4], squar[6])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[0], squar[3], squar[6])) {
-        winAndReload("orange");
-    }else if(blockInLineSecond(squar[2], squar[5], squar[8])) {
-        winAndReload("orange");
-    }
+function classContains(obj, name) {
+    return obj.classList.contains(name);
 }
+
+addEventListener("click", function(){
+    let coo1, coo2, coo3;
+    arrayCombinations.forEach(function(currentValue, index) {
+        [coo1, coo2, coo3] = currentValue;
+        if(classContains(squar[coo1], "first") && classContains(squar[coo2], "first") && classContains(squar[coo3], "first")) {
+            winAndReload("yellow");
+        }
+        if(classContains(squar[coo1], "second") && classContains(squar[coo2], "second") && classContains(squar[coo3], "second")) {
+            winAndReload("orange");
+        }    
+    });
+});
 
 function addColorToBlock(arg) {
     arg.addEventListener("click", function(){
@@ -100,9 +74,4 @@ function addColorToBlock(arg) {
         
     });     
 }
-//TIME - check 
-
-const TIME = setInterval(moveBlock, 100);  
-
-
 
