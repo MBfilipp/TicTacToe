@@ -32,6 +32,44 @@ function winAndReload(color) {
     
 }
 
+function algorithm(x, y){
+    let arrayCombinations = [];
+    let combinationsInWidth = [];
+    let combinationsInHeight = [];
+    let plus = [];
+    let last = [];
+    for(res = x, i = 0 ; i < x; i++, res += x) {
+        let XY = (x * y) - res - 1;
+        last.unshift(XY);
+        if(XY == -1) {
+            last.shift();
+            last.unshift(0);
+        }
+    }
+    //Push combinationsInWidth
+    for(i = 0; i < (x * y); i++) {
+        combinationsInWidth.push(i);
+        if(i == last[i]) {
+            combinationsInWidth.push("___");
+        }
+    }
+    
+    // Push plusArray
+    for(let i = 0; i < x; i++) {
+        plus.push(i)
+    }
+    //Push combinationsInHeight
+    plus.forEach((currentValue) => {
+        combinationsInHeight.push([currentValue, currentValue + x, currentValue + x + x, currentValue + x + x + x, currentValue + x + x + x + x]); 
+    });
+    
+    // Логи для проверки
+    console.log(combinationsInWidth);
+    console.log(last)
+    
+}
+algorithm(5, 5);
+
 let arrayCombinations = [
     [0, 1, 2],
     [3, 4, 5],
