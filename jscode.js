@@ -33,40 +33,14 @@ function winAndReload(color) {
 }
 
 function algorithm(x, y){
-    let arrayCombinations = [];
-    let combinationsInWidth = [];
-    let combinationsInHeight = [];
-    let plus = [];
-    let last = [];
-    for(res = x, i = 0 ; i < x; i++, res += x) {
-        let XY = (x * y) - res - 1;
-        last.unshift(XY);
-        if(XY == -1) {
-            last.shift();
-            last.unshift(0);
-        }
-    }
-    //Push combinationsInWidth
-    for(i = 0; i < (x * y); i++) {
-        combinationsInWidth.push(i);
-        if(i == last[i]) {
-            combinationsInWidth.push("___");
-        }
-    }
     
-    // Push plusArray
-    for(let i = 0; i < x; i++) {
-        plus.push(i)
+    let mainArray = [];
+    let xCordinates = [0];
+
+    for(let i = 0; i < x - 1; i++) {
+        xCordinates.push(xCordinates[i] + x);
     }
-    //Push combinationsInHeight
-    plus.forEach((currentValue) => {
-        combinationsInHeight.push([currentValue, currentValue + x, currentValue + x + x, currentValue + x + x + x, currentValue + x + x + x + x]); 
-    });
-    
-    // Логи для проверки
-    console.log(combinationsInWidth);
-    console.log(last)
-    
+    console.log(xCordinates);
 }
 algorithm(5, 5);
 
@@ -97,6 +71,7 @@ addEventListener("click", function(){
         }    
     });
 });
+
 
 function addColorToBlock(arg) {
     arg.addEventListener("click", function(){
