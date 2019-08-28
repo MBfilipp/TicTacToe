@@ -1,13 +1,13 @@
 const mainBlock = document.getElementsByClassName("main-squar")[0];
-const squar = document.getElementsByClassName("squar");
+const square = document.getElementsByClassName("squar");
 let move = "first";
-let squarArray = [];
+let squareArray = [];
 
 for(let i = 0; i < 9; i++){
-    squarArray.push(squar[i]);
+    squareArray.push(square[i]);
 }
 
-squarArray.forEach(x => {
+squareArray.forEach(x => {
     addColorToBlock(x);
 });
 
@@ -16,15 +16,15 @@ function winAndReload(color) {
 
     //Main block style
 
-    if(color == "yellow") {
+    if(color === "yellow") {
         mainBlock.style = "animation: shadowYellow 2s linear";
-    }else if(color == "orange") {
+    }else if(color === "orange") {
         mainBlock.style = "animation: shadowOrange 2s linear";
-    }else if(color == "draw") {
+    }else if(color === "draw") {
         mainBlock.style = "animation: shadowDraw 2s linear";
     }
     for(let i = 0; i < 9; i++) {
-        squar[i].style = "display: none";
+        square[i].style = "display: none";
     }
     setTimeout(() => {
         location.reload();
@@ -51,10 +51,10 @@ addEventListener("click", function(){
     let coo1, coo2, coo3;
     arrayCombinations.forEach(function(currentValue, index) {
         [coo1, coo2, coo3] = currentValue;
-        if(classContains(squar[coo1], "first") && classContains(squar[coo2], "first") && classContains(squar[coo3], "first")) {
+        if(classContains(square[coo1], "first") && classContains(square[coo2], "first") && classContains(square[coo3], "first")) {
             winAndReload("yellow");
         }
-        if(classContains(squar[coo1], "second") && classContains(squar[coo2], "second") && classContains(squar[coo3], "second")) {
+        if(classContains(square[coo1], "second") && classContains(square[coo2], "second") && classContains(square[coo3], "second")) {
             winAndReload("orange");
         }    
     });
@@ -63,11 +63,11 @@ addEventListener("click", function(){
 
 function addColorToBlock(ARG) {
     ARG.addEventListener("click", function(){
-        if(move == "first" && !ARG.classList.contains("second")) {
+        if(move === "first" && !ARG.classList.contains("second")) {
             move = "second";
             ARG.style = "background-color: yellow";
             ARG.classList.add("first");
-        }else if(move == "second" && !ARG.classList.contains("first")) {
+        }else if(move === "second" && !ARG.classList.contains("first")) {
             move = "first";
             ARG.style = "background-color: orange";
             ARG.classList.add("second");
