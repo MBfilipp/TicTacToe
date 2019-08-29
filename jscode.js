@@ -1,9 +1,11 @@
-const mainBlock = document.getElementsByClassName("main-squar")[0];
-const square = document.getElementsByClassName("squar");
+
+
+const mainBlock = document.getElementsByClassName("main-square")[0];
+const square = document.getElementsByClassName("square");
 let move = "first";
 let squareArray = [];
 
-for(let i = 0; i < 9; i++){
+for(let i = 0; i < square.length; i++){
     squareArray.push(square[i]);
 }
 
@@ -43,13 +45,10 @@ let arrayCombinations = [
     [2, 5, 8]    
 ]
 
-function classContains(obj, name) {
-    return obj.classList.contains(name);
-}
 
 addEventListener("click", function(){
     let coo1, coo2, coo3;
-    arrayCombinations.forEach(function(currentValue, index) {
+    arrayCombinations.forEach(function(currentValue) {
         [coo1, coo2, coo3] = currentValue;
         if(classContains(square[coo1], "first") && classContains(square[coo2], "first") && classContains(square[coo3], "first")) {
             winAndReload("yellow");
@@ -74,4 +73,8 @@ function addColorToBlock(ARG) {
         }
         
     });     
+}
+
+function classContains(obj, name) {
+    return obj.classList.contains(name);
 }

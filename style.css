@@ -1,10 +1,10 @@
-.squar {
+.square {
     width: 50px;
     height: 50px;
     margin: 2px;
     background: red;
 }
-.main-squar {
+.main-square {
     width: 162px;
     height: 162px;
     display: flex;
