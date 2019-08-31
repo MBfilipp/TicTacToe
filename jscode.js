@@ -1,4 +1,8 @@
+import classContains from "./modules/classContains.js";
+import winAndReload from "./modules/winAndReload.js";
+import addColorToBlock from "./modules/addColorToBlock.js";
 
+export {mainBlock, square, move};
 
 const mainBlock = document.getElementsByClassName("main-square")[0];
 const square = document.getElementsByClassName("square");
@@ -13,26 +17,7 @@ squareArray.forEach(x => {
     addColorToBlock(x);
 });
 
-function winAndReload(color) {
-    move = "";
 
-    //Main block style
-
-    if(color === "yellow") {
-        mainBlock.style = "animation: shadowYellow 2s linear";
-    }else if(color === "orange") {
-        mainBlock.style = "animation: shadowOrange 2s linear";
-    }else if(color === "draw") {
-        mainBlock.style = "animation: shadowDraw 2s linear";
-    }
-    for(let i = 0; i < 9; i++) {
-        square[i].style = "display: none";
-    }
-    setTimeout(() => {
-        location.reload();
-    }, 1500);
-    
-}
 
 let arrayCombinations = [
     [0, 1, 2],
@@ -59,22 +44,16 @@ addEventListener("click", function(){
     });
 });
 
-
-function addColorToBlock(ARG) {
-    ARG.addEventListener("click", function(){
-        if(move === "first" && !ARG.classList.contains("second")) {
+function addColorToBlock(arg) {
+    arg.addEventListener("click", function(){
+        if(move === "first" && !arg.classList.contains("second")) {
             move = "second";
-            ARG.style = "background-color: yellow";
-            ARG.classList.add("first");
-        }else if(move === "second" && !ARG.classList.contains("first")) {
+            arg.style = "background-color: yellow";
+            arg.classList.add("first");
+        }else if(move === "second" && !arg.classList.contains("first")) {
             move = "first";
-            ARG.style = "background-color: orange";
-            ARG.classList.add("second");
-        }
-        
+            arg.style = "background-color: orange";
+            arg.classList.add("second");
+        }   
     });     
-}
-
-function classContains(obj, name) {
-    return obj.classList.contains(name);
 }
