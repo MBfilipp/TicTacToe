@@ -17,7 +17,7 @@ squareArray.forEach(x => {
     addColorToBlock(x);
 });
 
-addEventListener("click", function(){
+document.body.onclick = function(){
     let coo1, coo2, coo3;
     arrayCombinations.forEach(function(currentValue) {
         [coo1, coo2, coo3] = currentValue;
@@ -28,4 +28,4 @@ addEventListener("click", function(){
             winAndReload("orange");
         }    
     });
-});
+};
